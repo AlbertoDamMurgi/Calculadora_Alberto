@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private String cadena="";
     private boolean coma=true;
-    private float operando1=0,operando2=0;
+    private double operando1=0,operando2=0;
     private String operacion;
     private boolean realizarop=true;
     @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     case "suma":
                         if(!resultado.getText().toString().equals("")){
 
-                            operando2=Float.parseFloat(resultado.getText().toString());
+                            operando2=Double.parseDouble(resultado.getText().toString());
                             operando2=operando1+operando2;
                             resultado.setText(String.valueOf(operando2));
                             realizarop=true;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(!resultado.getText().toString().equals("")){
 
-                            operando2=Float.parseFloat(resultado.getText().toString());
+                            operando2=Double.parseDouble(resultado.getText().toString());
                             operando2=operando1-operando2;
                             resultado.setText(String.valueOf(operando2));
                             realizarop=true;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     case "multi":
                         if(!resultado.getText().toString().equals("")){
 
-                            operando2=Float.parseFloat(resultado.getText().toString());
+                            operando2=Double.parseDouble(resultado.getText().toString());
                             operando2=operando1*operando2;
                             resultado.setText(String.valueOf(operando2));
                             realizarop=true;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(!resultado.getText().toString().equals("")){
 
-                            operando2=Float.parseFloat(resultado.getText().toString());
+                            operando2=Double.parseDouble(resultado.getText().toString());
                             operando2=operando1/operando2;
                             resultado.setText(String.valueOf(operando2));
                             realizarop=true;
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 if(realizarop&&!resultado.getText().toString().equals("")){
 
                     operacion="div";
-                    operando1=Float.parseFloat(resultado.getText().toString());
+                    operando1=Double.parseDouble(resultado.getText().toString());
                     resultado.setText("");
 
 
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 if(realizarop&&!resultado.getText().toString().equals("")){
 
                     operacion="resta";
-                    operando1=Float.parseFloat(resultado.getText().toString());
+                    operando1=Double.parseDouble(resultado.getText().toString());
                     resultado.setText("");
 
 
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 if(realizarop&&!resultado.getText().toString().equals("")){
 
                     operacion="multi";
-                    operando1=Float.parseFloat(resultado.getText().toString());
+                    operando1=Double.parseDouble(resultado.getText().toString());
                     resultado.setText("");
 
 
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 if(realizarop&&!resultado.getText().toString().equals("")){
 
                     operacion="suma";
-                    operando1=Float.parseFloat(resultado.getText().toString());
+                    operando1=Double.parseDouble(resultado.getText().toString());
                     resultado.setText("");
 
 
@@ -207,11 +207,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                float aux =0;
+                double aux =0;
 
                 cadena=resultado.getText().toString();
 
-                aux=Float.parseFloat(cadena);
+                aux=Double.parseDouble(cadena);
 
                aux=aux*-1;
 
@@ -258,12 +258,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                cadena="";
+
                 operando1=0;
                 operando2=0;
                 coma=true;
 
-                resultado.setText(cadena);
+                resultado.setText("");
 
             }
 
@@ -288,9 +288,10 @@ public class MainActivity extends AppCompatActivity {
                         cadena = "0.";
                         resultado.setText(cadena);
                     } else {
-
-                        cadena += ".";
-                        resultado.setText(cadena);
+                        if(!cadena.contains(".")) {
+                            cadena += ".";
+                            resultado.setText(cadena);
+                        }
                     }
                 }
                 coma=false;
