@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private String cadena="";
     private boolean coma=true;
     private double operando1=0,operando2=0;
     private String operacion;
-    private boolean realizarop=true;
+    private boolean realizarop=true,primeravez=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+        if(primeravez) {
+            Toast.makeText(getApplicationContext(), R.string.saludo, Toast.LENGTH_LONG).show();
+            primeravez=false;
+        }
+
+
         btn_igual.setOnClickListener(new View.OnClickListener() {
 
 
@@ -55,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                             operando2=operando1+operando2;
                             resultado.setText(String.valueOf(operando2));
                             realizarop=true;
+                        }else{
+
+
+
                         }
 
                         break;
@@ -316,6 +329,10 @@ public class MainActivity extends AppCompatActivity {
                 if(!cadena.equals("0")&&!cadena.equals("")) {
                     cadena += "0";
                     resultado.setText(cadena);
+                }else{
+
+                    Toast.makeText(getApplicationContext(),R.string.cero,Toast.LENGTH_LONG).show();
+
                 }
             }
 
